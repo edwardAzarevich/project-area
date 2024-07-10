@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ExpandingComponent from "./components/expandingComponent/ExpandingComponent";
 import "./App.css";
+import AppSlider from './router/AppSlider'
 
 
 function App() {
@@ -24,9 +25,11 @@ function App() {
     const cls = visible ? "visible" : "hidden";
 
     return (
-        <div className="App">
-            <ExpandingComponent />
-        </div>
+
+        /* <div className="App">
+             <ExpandingComponent />
+        </div>*/
+        <AppSlider />
     );
 }
 
