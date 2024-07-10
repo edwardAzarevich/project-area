@@ -15,31 +15,27 @@ const withSlider = (BaseComponent, getData) => {
             setSlide(slide => slide + i);
         }
 
-        return <BaseComponent />
+        return <BaseComponent
+            {...props}
+            slide={slide}
+            autoplay={autoplay}
+            changeSlide={changeSlide}
+            setAutoplay={setAutoplay} />
     }
 }
 
 const getDataFromFirstFetch = () => { return 10 };
 const getDataFromSecondFetch = () => { return 20 };
 
-const SliderFirst = () => {
-    const [slide, setSlide] = useState(0);
-
-    useEffect(() => {
-        setSlide(getDataFromFirstFetch());
-    }, [])
-
-    function changeSlide(i) {
-        setSlide(slide => slide + i);
-    }
-
+const SliderFirst = (props) => {
+    const { slide, changeSlide } = props
     return (
         <Container>
             <div className="slider w-50 m-auto">
                 <img className="d-block w-100"
                     src="https://www.planetware.com/wpimages/2020/02/france-in-pictures-beautiful-places-to-photograph-eiffel-tower.jpg"
                     alt="slide" />
-                // <div className="text-center mt-5">Active slide {slide}</div>
+                <div className="text-center mt-5">Active slide {slide}</div>
                 <div className="buttons mt-3">
                     <button
                         className="btn btn-primary me-2"
@@ -53,18 +49,8 @@ const SliderFirst = () => {
     )
 }
 
-const SliderSecond = () => {
-    const [slide, setSlide] = useState(0);
-    const [autoplay, setAutoplay] = useState(false)
-
-    useEffect(() => {
-        setSlide(getDataFromSecondFetch());
-    }, [])
-
-    function changeSlide(i) {
-        setSlide(slide => slide + i);
-    }
-
+const SliderSecond = (props) => {
+    const { slide, autoplay, changeSlide, setAutoplay } = props;
     return (
         <Container>
             <div className="slider w-50 m-auto">
@@ -86,11 +72,15 @@ const SliderSecond = () => {
     )
 }
 
+const SliderWithFirstFetch = withSlider(SliderFirst, getDataFromFirstFetch);
+const SliderWithSecondFetch = withSlider(SliderSecond, getDataFromSecondFetch);
+
+
 function AppSlider() {
     return (
         <>
-            <SliderFirst />
-            <SliderSecond />
+            <SliderWithFirstFetch />
+            <SliderWithSecondFetch />
         </>
     );
 }

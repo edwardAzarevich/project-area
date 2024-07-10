@@ -6,23 +6,22 @@ import AppSlider from './router/AppSlider'
 
 
 function App() {
-    const [position, setPosition] = useState(window.pageYOffset)
-    const [visible, setVisible] = useState(true)
-    useEffect(() => {
-        const handleScroll = () => {
-            let moving = window.pageYOffset
-            let cursor = window.
+    // const [position, setPosition] = useState(window.pageYOffset)
+    // const [visible, setVisible] = useState(true)
+    // useEffect(() => {
+    //     const handleScroll = () => {
+    //         let moving = window.pageYOffset
+    //         let cursor = window.
+    //             setVisible(position > moving);
+    //         setPosition(moving)
+    //     };
+    //     window.addEventListener("scroll", handleScroll);
+    //     return (() => {
+    //         window.removeEventListener("scroll", handleScroll);
+    //     })
+    // })
 
-                setVisible(position > moving);
-            setPosition(moving)
-        };
-        window.addEventListener("scroll", handleScroll);
-        return (() => {
-            window.removeEventListener("scroll", handleScroll);
-        })
-    })
-
-    const cls = visible ? "visible" : "hidden";
+    // const cls = visible ? "visible" : "hidden";
 
     return (
 
