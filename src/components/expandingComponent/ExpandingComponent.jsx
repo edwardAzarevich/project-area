@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './ExpandingComponent.css';
 
 const ExpandingComponent = () => {
-    const [isHovered, setIsHovered] = useState(false);
+    // const [isHovered, setIsHovered] = useState(false);
 
-    useEffect(() => {
-        const handleMouseMove = (event) => {
-            if (event.clientY <= 50) {
-                setIsHovered(true);
-            } else {
-                setIsHovered(false);
-            }
-        };
+    // useEffect(() => {
+    //     const handleMouseMove = (event) => {
+    //         if (event.clientY <= 50) {
+    //             setIsHovered(true);
+    //         } else {
+    //             setIsHovered(false);
+    //         }
+    //     };
 
-        window.addEventListener('mousemove', handleMouseMove);
+    //     window.addEventListener('mousemove', handleMouseMove);
 
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-        };
-    }, []);
+    //     return () => {
+    //         window.removeEventListener('mousemove', handleMouseMove);
+    //     };
+    // }, []);
 
     return (
         <div style={{ position: 'relative', height: '100vh' }}>
