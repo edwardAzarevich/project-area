@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import ExpandingComponent from "./components/expandingComponent/ExpandingComponent";
 import "./App.css";
 import AppSlider from './router/AppSlider'
+import MyComponent from './components/animation/Animation';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
         /* <div className="App">
              <ExpandingComponent />
         </div>*/
-        <AppSlider />
+        // <AppSlider />
+        <MyComponent />
     );
 }
 
