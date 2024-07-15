@@ -5,7 +5,7 @@ const TopDrawerComponent = () => {
 
     useEffect(() => {
         const handleMouseMove = (event) => {
-            if (event.clientY <= 50) {
+            if (event.clientY <= 40) {
                 setShowDrawer(true);
             } else {
                 setShowDrawer(false);
@@ -29,7 +29,7 @@ const TopDrawerComponent = () => {
                 right: '0',
                 backgroundColor: '#333',
                 color: '#fff',
-                padding: '20px',
+
                 transition: 'top 0.3s ease-in-out',
                 zIndex: '100',
             }}
