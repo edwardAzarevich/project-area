@@ -1,33 +1,23 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import ExpandingComponent from "./components/expandingComponent/ExpandingComponent";
-import "./App.css";
+import TopDrawerComponent from './components/animation/MoveComponent.jsx';
+import './index.css';
+import ReactPlayer from "react-player/youtube";
+
 
 
 function App() {
-    const [position, setPosition] = useState(window.pageYOffset)
-    const [visible, setVisible] = useState(true)
-    useEffect(() => {
-        const handleScroll = () => {
-            let moving = window.pageYOffset
-            let cursor = window.
-
-                setVisible(position > moving);
-            setPosition(moving)
-        };
-        window.addEventListener("scroll", handleScroll);
-        return (() => {
-            window.removeEventListener("scroll", handleScroll);
-        })
-    })
-
-    const cls = visible ? "visible" : "hidden";
-
     return (
-        <div className="App">
-            <ExpandingComponent />
-        </div>
+        <>
+            <TopDrawerComponent />
+            <MyVideo />
+        </>
     );
 }
+
+const MyVideo = () => {
+    return (
+        <ReactPlayer url='https://www.youtube.com/watch?v=zMf_xeGPn6s&ab_channel=Remix' />
+    );
+};
 
 export default App
