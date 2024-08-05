@@ -1,65 +1,42 @@
-import { useState, useRef } from "react";
-import "./App.css";
-
-function App() {
-    const inputRef = useRef(null);
-    const resultRef = useRef(null);
-    const [result, setResult] = useState(0);
-
-    function plus(e) {
-        e.preventDefault();
-        setResult((result) => result + Number(inputRef.current.value));
-    };
-
-    function minus(e) {
-        e.preventDefault();
-        setResult((result) => result - Number(inputRef.current.value));
-    };
-
-    function times(e) {
-        e.preventDefault();
-        setResult((result) => result * Number(inputRef.current.value));
-    };
-
-    function divide(e) {
-        e.preventDefault();
-        setResult((result) => result / Number(inputRef.current.value));
-    };
-
-    function resetInput(e) {
-        e.preventDefault();
-        inputRef.current.value = "";
-    };
-
-    function resetResult(e) {
-        e.preventDefault();
-        setResult(0);
-    };
+import { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import './App.css';
+import 'bootstrap/dist/js/bootstrap.js';
+const Modal = (props) => {
 
     return (
-        <div className="App">
-            <div>
-                <h1>Simplest Working Calculator</h1>
+        <div className="modal mt-5 d-block">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Typical modal window</h5>
+                        <button onClick={() => props.onClose(false)} type="button" className="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div className="modal-body">
+                        <p>Modal body content</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button onClick={() => props.onClose(false)} type="button" className="btn btn-secondary">Close</button>
+                        <button onClick={() => props.onClose(false)} type="button" className="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
             </div>
-            <form>
-                <p ref={resultRef}>
-                    {result}
-                </p>
-                <input
-                    pattern="[0-9]"
-                    ref={inputRef}
-                    type="number"
-                    placeholder="Type a number"
-                />
-                <button onClick={plus}>add</button>
-                <button onClick={minus}>minus</button>
-                <button onClick={times}>times</button>
-                <button onClick={divide}>divide</button>
-                <button onClick={resetInput}>reset input</button>
-                <button onClick={resetResult}>reset result</button>
-            </form>
         </div>
+    )
+}
+
+function App() {
+    const [showModal, setShowModal] = useState(false);
+
+    return (
+        <Container>
+            {showModal ? <Modal onClose={setShowModal} /> : null}
+            <button
+                type="button"
+                className="btn btn-warning mt-5"
+                onClick={() => setShowModal(true)}>Open Modal</button>
+        </Container>
     );
 }
 
-export default App; 
+export default App;
