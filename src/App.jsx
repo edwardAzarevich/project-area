@@ -18,7 +18,11 @@ const Modal = (props) => {
         exited: { opacity: 0, visibility: "hidden" },
     };
     return (
-        <Transition in={props.show} timeout={duration}>
+        <Transition
+            in={props.show}
+            timeout={duration}
+            onEnter={() => props.setShowTrigger(false)}
+            onExited={() => props.setShowTrigger(true)}>
             {state => (
                 <div className="modal mt-5 d-block" style={{
                     ...defaultStyle,
@@ -47,14 +51,17 @@ const Modal = (props) => {
 
 function App() {
     const [showModal, setShowModal] = useState(false);
-
+    const [showTrigger, setShowTrigger] = useState(true)
     return (
         <Container>
-            <Modal show={showModal} onClose={setShowModal} />
-            <button
-                type="button"
-                className="btn btn-warning mt-5"
-                onClick={() => setShowModal(true)}>Open Modal</button>
+            <Modal show={showModal} onClose={setShowModal} setShowTrigger={setShowTrigger} />
+            {showTrigger ?
+                <button
+                    type="button"
+                    className="btn btn-warning mt-5"
+                    onClick={() => setShowModal(true)}>Open Modal</button> :
+                null
+            }
         </Container>
     );
 }
